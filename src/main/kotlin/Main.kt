@@ -1,28 +1,36 @@
 const val HERO_NAME = "Madrigal"
-var playerLevel = 5
+var playerLevel = 0
 fun main() {
-    println("The hero announces her presence to the world.")
-    println(HERO_NAME)
-    println(playerLevel)
+    println("$HERO_NAME announces her presence to the world.")
+    println("What level is $HERO_NAME?")
+    val playerLevelInput = readln()
+    // Checking if input contains all the digits to be parsed into integer
+    //[\d+] denotes any digit between 0 and 9 and + represents one or more instances of the character to its left.
+    playerLevel = if (playerLevelInput.matches("""\d+""".toRegex()))
+        playerLevelInput.toInt()
+    else
+        1
 
     println("Time passes..")
-    println("The hero returns from her quest.")
+    println("$HERO_NAME returns from her quest.")
 
     playerLevel += 1
     println(playerLevel)
     readBountyBoard()
 }
 
-
 private fun readBountyBoard() {
-    println("The hero approaches the bounty board. It reads:")
-    println(obtainQuest(playerLevel, "paladin", true))
+    println("""
+        $HERO_NAME approaches the bounty board. It reads:
+            ${obtainQuest(playerLevel).replace("Nogartse","xxxxxxxx")}
+    """.trimIndent())
+
 }
 
 private fun obtainQuest(
     playerLevel: Int,
-    playerClass: String,
-    hasAngeredBarbarians: Boolean,
+    playerClass: String = "paladin",
+    hasAngeredBarbarians: Boolean = true,
     hasBefriendedBarbarians: Boolean = false
 ): String =
     when (playerLevel) {
