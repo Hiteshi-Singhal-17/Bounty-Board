@@ -41,7 +41,7 @@ private fun obtainQuest(
     hasBefriendedBarbarians: Boolean = false
 ): String? {
     // Throws IllegalArgumentException, indicates that an illegal input was provided.
-    require (playerLevel > 0){
+    require(playerLevel > 0) {
         "The player's level must be at least 1."
     }
 
@@ -64,7 +64,7 @@ private fun obtainQuest(
 }
 
 // Custom Exception.
-class InvalidPlayerLevelException() : IllegalArgumentException("Invalid player level (must be at least 1)")
+class InvalidPlayerLevelException : IllegalArgumentException("Invalid player level (must be at least 1)")
 
 
 
